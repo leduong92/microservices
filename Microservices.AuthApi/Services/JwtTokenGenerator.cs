@@ -27,6 +27,7 @@ namespace Microservices.AuthApi.Services
                 new Claim(JwtRegisteredClaimNames.Email, applicationUser.Email),
                 new Claim(JwtRegisteredClaimNames.Sub, applicationUser.Id),
                 new Claim(JwtRegisteredClaimNames.Name, applicationUser.UserName),
+                new Claim("RegionId", applicationUser.RegionId != null ? applicationUser.RegionId.ToString() : "0"),
             };
 
             claimList.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));

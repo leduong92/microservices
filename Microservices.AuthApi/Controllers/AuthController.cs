@@ -1,6 +1,10 @@
-﻿using Microservices.AuthApi.Services.IService;
+﻿using Azure;
+using Microservices.AuthApi.Services.IService;
+using Microservices.Shared;
 using Microservices.Shared.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Microservices.AuthApi.Controllers
 {
@@ -18,6 +22,12 @@ namespace Microservices.AuthApi.Controllers
             _authService = authService;
             _configuration = configuration;
         }
+        [HttpGet("region")]
+        public async Task<IActionResult> GetRegionsAsync()
+        {
+            var response = await _authService.GetRegionsAsync();
+            return Ok(response);
+        }
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterationRequestDto model)
         {
@@ -34,6 +44,18 @@ namespace Microservices.AuthApi.Controllers
         {
             var response = await _authService.Login(model);
             if (response.Data == null)
+            {
+                return BadRequest();
+            }
+            return Ok(response);
+
+        }
+
+        [HttpPost("AssignRole")]
+        public async Task<IActionResult> AssignRole([FromBody] RegisterationRequestDto model)
+        {
+            var response = await _authService.AssignRole(model.Email, model.Role.ToUpper());
+            if (!response.IsSuccess)
             {
                 return BadRequest();
             }

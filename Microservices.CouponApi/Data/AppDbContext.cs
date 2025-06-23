@@ -15,22 +15,22 @@ namespace Microservices.CouponApi.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Entity<Coupon>().HasData(new Coupon
-            {
-                Id = 1,
-                CouponCode = "10OFF",
-                DiscountAmount = 10,
-                MinAmount = 20
-            });
+            //modelBuilder.Entity<Coupon>().HasData(new Coupon
+            //{
+            //    Id = 1,
+            //    CouponCode = "10OFF",
+            //    DiscountAmount = 10,
+            //    MinAmount = 20
+            //});
 
 
-            modelBuilder.Entity<Coupon>().HasData(new Coupon
-            {
-                Id = 2,
-                CouponCode = "20OFF",
-                DiscountAmount = 20,
-                MinAmount = 40
-            });
+            //modelBuilder.Entity<Coupon>().HasData(new Coupon
+            //{
+            //    Id = 2,
+            //    CouponCode = "20OFF",
+            //    DiscountAmount = 20,
+            //    MinAmount = 40
+            //});
         }
     }
 }

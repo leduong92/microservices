@@ -1,6 +1,8 @@
 ﻿using Microservices.CouponApi.Data;
+using Microservices.CouponApi.Models;
 using Microservices.Shared;
 using Microservices.Shared.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +10,7 @@ namespace Microservices.CouponApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CouponController : Controller
     {
         private readonly AppDbContext _context;
@@ -59,6 +62,23 @@ namespace Microservices.CouponApi.Controllers
             return ApiResponse<CouponDto>.Success(results);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "ADMIN")]
+        public async Task<ApiResponse<CouponDto>> Post([FromBody] CouponDto couponDto)
+        {
+            var coupon = new Coupon
+            {
+                Id = couponDto.Id,
+                CouponCode = couponDto.CouponCode,
+                DiscountAmount = couponDto.DiscountAmount,
+                MinAmount = couponDto.MinAmount,
+                LastUpdated = DateTime.UtcNow
+            };
 
+            _context.Coupons.Add(coupon);
+            await _context.SaveChangesAsync();
+
+			return ApiResponse<CouponDto>.Success(couponDto);
+		}
     }
 }

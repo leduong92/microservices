@@ -12,7 +12,18 @@ namespace Microservices.Web.Services
         {
             _baseApiClient = baseApiClient;
         }
-        public async Task<ApiResponse<List<CouponDto>>> GetAllCouponsAsync()
+
+		public async Task<ApiResponse<CouponDto>> CreateCouponsAsync(CouponDto couponDto)
+		{
+			return await _baseApiClient.SendAsync<CouponDto>(new RequestDto()
+			{
+				ApiType = SD.ApiType.POST,
+				Data = couponDto,
+				Url = SD.CouponAPIBase + "/api/coupon"
+			});
+		}
+
+		public async Task<ApiResponse<List<CouponDto>>> GetAllCouponsAsync()
         {
             return await _baseApiClient.SendAsync<List<CouponDto>>(new RequestDto()
             {

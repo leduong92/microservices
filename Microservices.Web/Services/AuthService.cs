@@ -22,6 +22,15 @@ namespace Microservices.Web.Services
             });
         }
 
+        public async Task<ApiResponse<List<RegionDto>>> GetRegionsAsync()
+        {
+            return await _baseService.SendAsync<List<RegionDto>>(new RequestDto()
+            {
+                ApiType = SD.ApiType.GET,
+                Url = SD.AuthAPIBase + "/api/auth/region"
+            });
+        }
+
         public async Task<ApiResponse<LoginResponseDto>> LoginAsync(LoginRequestDto loginRequestDto)
         {
             return await _baseService.SendAsync<LoginResponseDto>(new RequestDto()

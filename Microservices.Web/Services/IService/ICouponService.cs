@@ -7,5 +7,6 @@ namespace Microservices.Web.Services.IService
     {
         Task<ApiResponse<CouponDto>> GetCouponAsync(string couponCode);
         Task<ApiResponse<List<CouponDto>>> GetAllCouponsAsync();
-    }
+		Task<ApiResponse<CouponDto>> CreateCouponsAsync(CouponDto couponDto);
+	}
 }

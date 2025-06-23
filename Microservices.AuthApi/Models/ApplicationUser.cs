@@ -6,5 +6,6 @@ namespace Microservices.AuthApi.Models
     {
         public string? AccountNumber { get; set; }
         public string? DisplayName { get; set; }
+        public int RegionId { get; set; }
     }
 }

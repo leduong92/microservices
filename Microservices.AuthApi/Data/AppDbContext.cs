@@ -8,6 +8,7 @@ namespace Microservices.AuthApi.Data
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Region> Regions { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
         {
         }

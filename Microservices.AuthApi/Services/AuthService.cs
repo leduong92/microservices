@@ -4,6 +4,7 @@ using Microservices.AuthApi.Services.IService;
 using Microservices.Shared;
 using Microservices.Shared.Dtos;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Microservices.AuthApi.Services
 {
@@ -40,6 +41,18 @@ namespace Microservices.AuthApi.Services
             return ApiResponse<bool>.Failure("AssignRole fail");
         }
 
+        public async Task<ApiResponse<List<RegionDto>>> GetRegionsAsync()
+        {
+            var response = await _context.Regions.AsNoTracking().Select(x => new RegionDto
+             {
+                 Id = x.Id,
+                 Name = x.Name,
+                 Code = x.Code,
+                 Description = x.Description
+             }).ToListAsync();
+            return ApiResponse<List<RegionDto>>.Success(response);
+        }
+
         public async Task<ApiResponse<LoginResponseDto>> Login(LoginRequestDto loginRequestDto)
         {
             var user = _context.ApplicationUsers.FirstOrDefault(u => u.UserName.ToLower() == loginRequestDto.UserName.ToLower());
@@ -59,7 +72,8 @@ namespace Microservices.AuthApi.Services
                 Email = user.Email,
                 ID = user.Id,
                 Name = user.DisplayName,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                RegionId = user.RegionId
             };
 
             LoginResponseDto loginResponseDto = new LoginResponseDto()
@@ -79,7 +93,8 @@ namespace Microservices.AuthApi.Services
                 Email = registrationRequestDto.Email,
                 NormalizedEmail = registrationRequestDto.Email.ToUpper(),
                 DisplayName = registrationRequestDto.Name,
-                PhoneNumber = registrationRequestDto.PhoneNumber
+                PhoneNumber = registrationRequestDto.PhoneNumber,
+                RegionId = registrationRequestDto.RegionId
             };
 
             try
@@ -94,7 +109,8 @@ namespace Microservices.AuthApi.Services
                         Email = userToReturn.Email,
                         ID = userToReturn.Id,
                         Name = userToReturn.DisplayName,
-                        PhoneNumber = userToReturn.PhoneNumber
+                        PhoneNumber = userToReturn.PhoneNumber,
+                        RegionId = userToReturn.RegionId
                     };
 
                     return ApiResponse<UserDto>.Success(userDto);

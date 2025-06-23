@@ -1,0 +1,6 @@
+@Microservices.InventoryApi_HostAddress = http://localhost:5102
+
+GET {{Microservices.InventoryApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

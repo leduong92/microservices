@@ -49,8 +49,15 @@ namespace Microservices.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            var regions = await _authService.GetRegionsAsync();
+            ViewBag.Regions = regions.Data?.Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = r.Name
+            }).ToList();
+
             var roleList = new List<SelectListItem>()
             {
                 new SelectListItem{Text=SD.RoleAdmin,Value=SD.RoleAdmin},
@@ -118,10 +125,11 @@ namespace Microservices.Web.Controllers
 
             identity.AddClaim(new Claim(ClaimTypes.Name,
                 jwt.Claims.FirstOrDefault(u => u.Type == JwtRegisteredClaimNames.Email).Value));
-            //identity.AddClaim(new Claim(ClaimTypes.Role,
-            //    jwt.Claims.FirstOrDefault(u => u.Type == "role").Value));
+            identity.AddClaim(new Claim(ClaimTypes.Role,
+                jwt.Claims.FirstOrDefault(u => u.Type == "role").Value));
 
-
+            identity.AddClaim(new Claim("RegionId",
+             jwt.Claims.FirstOrDefault(u => u.Type == "RegionId").Value));
 
             var principal = new ClaimsPrincipal(identity);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
