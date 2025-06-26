@@ -14,11 +14,15 @@ builder.Services.AddHttpClient<IAuthService, AuthService>();
 
 SD.CouponAPIBase = builder.Configuration["ServiceUrls:CouponAPI"];
 SD.AuthAPIBase = builder.Configuration["ServiceUrls:AuthAPI"];
+SD.LocalizationAPIBase = builder.Configuration["ServiceUrls:LocalizationAPI"];
+SD.RegionAPIBase = builder.Configuration["ServiceUrls:RegionAPI"];
 
 builder.Services.AddScoped<ITokenProvider, TokenProvider>();
 builder.Services.AddScoped<IBaseApiClient, BaseApiClient>();
 builder.Services.AddScoped<ICouponService, CouponService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IRegionService, RegionService>();
+builder.Services.AddScoped<ILocalizationService, LocalizationService>();
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
