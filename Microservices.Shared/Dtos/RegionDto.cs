@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Microservices.Shared.Dtos
 {
@@ -11,6 +7,7 @@ namespace Microservices.Shared.Dtos
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Code { get; set; }
+        public string? Currency { get; set; }
         public string? Description { get; set; }
     }
 }
