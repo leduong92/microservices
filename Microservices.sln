@@ -19,20 +19,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.ShoppingCartA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.OrderApi", "Microservices.OrderApi\Microservices.OrderApi.csproj", "{E435B1BC-71C4-4BF5-83A0-3A8000D56C43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Shared", "Microservices.Shared\Microservices.Shared.csproj", "{2FD83C10-078D-4C7E-B041-210A176B8C39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Shared", "Microservices.Shared\Microservices.Shared.csproj", "{2FD83C10-078D-4C7E-B041-210A176B8C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Web", "Microservices.Web\Microservices.Web.csproj", "{7D1631F6-604D-4015-884E-6B59CF0068E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Web", "Microservices.Web\Microservices.Web.csproj", "{7D1631F6-604D-4015-884E-6B59CF0068E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.AuthApi", "Microservices.AuthApi\Microservices.AuthApi.csproj", "{B08E373F-A000-438C-ADEB-7CDBB3C524E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.AuthApi", "Microservices.AuthApi\Microservices.AuthApi.csproj", "{B08E373F-A000-438C-ADEB-7CDBB3C524E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.InventoryApi", "Microservices.InventoryApi\Microservices.InventoryApi.csproj", "{60ECA506-D6C9-47F7-8BA8-01F782497894}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.InventoryApi", "Microservices.InventoryApi\Microservices.InventoryApi.csproj", "{60ECA506-D6C9-47F7-8BA8-01F782497894}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.PaymentApi", "Microservices.PaymentApi\Microservices.PaymentApi.csproj", "{A8D855D5-DA1F-4A3A-A2C1-17903FACC93E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.PaymentApi", "Microservices.PaymentApi\Microservices.PaymentApi.csproj", "{A8D855D5-DA1F-4A3A-A2C1-17903FACC93E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{F88B3943-7050-425A-8331-091C2C4B47AF}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.LocalizationApi", "Microservices.LocalizationApi\Microservices.LocalizationApi.csproj", "{8C62183C-B70F-4553-B6BD-CC1D99AEEEA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.RegionApi", "Microservices.RegionApi\Microservices.RegionApi.csproj", "{94A23969-C88A-4793-B341-7EE9F7CD3D73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +80,14 @@ Global
 		{A8D855D5-DA1F-4A3A-A2C1-17903FACC93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8D855D5-DA1F-4A3A-A2C1-17903FACC93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8D855D5-DA1F-4A3A-A2C1-17903FACC93E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C62183C-B70F-4553-B6BD-CC1D99AEEEA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C62183C-B70F-4553-B6BD-CC1D99AEEEA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C62183C-B70F-4553-B6BD-CC1D99AEEEA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C62183C-B70F-4553-B6BD-CC1D99AEEEA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94A23969-C88A-4793-B341-7EE9F7CD3D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A23969-C88A-4793-B341-7EE9F7CD3D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A23969-C88A-4793-B341-7EE9F7CD3D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A23969-C88A-4793-B341-7EE9F7CD3D73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +102,8 @@ Global
 		{B08E373F-A000-438C-ADEB-7CDBB3C524E0} = {BDEB299E-95F9-4C80-9684-7F460E5BD09C}
 		{60ECA506-D6C9-47F7-8BA8-01F782497894} = {BDEB299E-95F9-4C80-9684-7F460E5BD09C}
 		{A8D855D5-DA1F-4A3A-A2C1-17903FACC93E} = {BDEB299E-95F9-4C80-9684-7F460E5BD09C}
+		{8C62183C-B70F-4553-B6BD-CC1D99AEEEA9} = {BDEB299E-95F9-4C80-9684-7F460E5BD09C}
+		{94A23969-C88A-4793-B341-7EE9F7CD3D73} = {BDEB299E-95F9-4C80-9684-7F460E5BD09C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D8CBB6A-60AA-4E93-924B-F9AA57FF4CD2}

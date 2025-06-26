@@ -7,8 +7,8 @@ namespace Microservices.LocalizationApi.Model
         [Key]
         public int Id { get; set; }
         [MaxLength(24)]
-        public string Code { get; set; }
+        public string? Code { get; set; }
         [MaxLength(128)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }
