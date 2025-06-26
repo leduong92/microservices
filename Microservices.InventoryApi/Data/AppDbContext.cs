@@ -11,5 +11,11 @@ namespace Microservices.InventoryApi.Data
             
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Inventory>().HasKey(x => new { x.ProductId, x.RegionId });
+        }
+
     }
 }
